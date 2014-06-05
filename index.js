@@ -49,7 +49,7 @@ module.exports.verify = function(jwtString, secretOrPublicKey, options, callback
 
   if (payload.exp) {
     if (Math.round(Date.now()) / 1000 >= payload.exp)
-      return callback(new Error('jwt expired'));
+      return callback(new Error('jwt expired'), payload);
   }
 
   if (options.audience) {
